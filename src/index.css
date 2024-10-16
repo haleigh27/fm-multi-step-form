@@ -1,1 +1,159 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
 
+:root {
+  /* colors */
+
+  /* Colors as per figma design file */
+  --clr-denim: hsl(213, 96%, 18%);
+  --clr-purplish-blue: hsl(243, 100%, 62%);
+  --clr-light-blue: hsl(228, 100%, 84%);
+  --clr-sky-blue: hsl(206, 94%, 87%);
+  --clr-red-errors: hsl(354, 84%, 57%);
+
+  --clr-grey: hsl(231, 11%, 63%);
+  --clr-light-grey: hsl(229, 24%, 87%);
+  --clr-very-light-grey: hsl(231, 100%, 99%);
+  --clr-bg: hsl(218, 100%, 97%);
+  --clr-border-color: hsl(231, 23%, 87%);
+  -clr-white: hsl(0, 0%, 100%);
+
+  /* Colors as per style-guide.md */
+
+  /* --clr-marine-blue: hsl(213, 96%, 18%); denim */
+  /* --clr-purplish-blue: hsl(243, 100%, 62%); purple */
+  /* --clr-pastel-blue: hsl(228, 100%, 84%); light blue */
+  /* --clr-light-blue: hsl(206, 94%, 87%); sky-blue */
+  /* --clr-strawberry-red: hsl(354, 84%, 57%); red-errors*/
+
+  /* --clr-cool-gray: hsl(231, 11%, 63%); grey */
+  /* --clr-light-gray: hsl(229, 24%, 87%); */
+  /* --clr-magnolia: hsl(217, 100%, 97%); bg*/
+  /* --clr-alabaster: hsl(231, 100%, 99%); very-light-grey*/
+  /* -clr-white: hsl(0, 0%, 100%); */
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-denim);
+  min-height: 100vh;
+
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------- */
+/* Typography          */
+/* ------------------- */
+
+.heading {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: normal;
+}
+
+.body-l {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.body-m {
+  font-size: 0.875rem;
+  line-height: normal;
+}
+
+.body-s {
+  font-size: 0.75rem;
+  line-height: normal;
+}
+
+/* ------------------- */
+/* General classes     */
+/* ------------------- */
+
+.error {
+  color: var(--clr-red);
+  margin-top: 8px;
+}
+
+.error-border {
+  border-color: var(--clr-red);
+}
+
+.hidden {
+  display: none;
+}
