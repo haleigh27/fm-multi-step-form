@@ -1,24 +1,15 @@
 import React from 'react';
+import { addOnOptions } from '../../data';
 
-const addOns = [
-  {
-    item: 'Online service',
-    desc: 'Access to multiplayer games',
-    price: '+$1/mo',
-  },
-  {
-    item: 'Larger Storage',
-    desc: 'Extra 1TB of cloud save',
-    price: '+$2/mo',
-  },
-  {
-    item: 'Customizable Profile',
-    desc: 'Custom theme on your profile',
-    price: '+$2/mo',
-  },
-];
+function AddOns({ addOns, updateFields, plan }) {
+  const handleAddOnChange = (addOn) => {
+    const updatedAddOns = addOns.includes(addOn)
+      ? addOns.filter((item) => item !== addOn)
+      : [...addOns, addOn];
 
-function AddOns() {
+    updateFields({ addOns: updatedAddOns });
+  };
+
   const label = (item) => item.toLowerCase().split(' ').join('-');
 
   return (
@@ -26,19 +17,22 @@ function AddOns() {
       <h2>Pick add-ons</h2>
       <p className="description">Add-ons help enhance your gaming experience.</p>
       <div className="add-ons-container">
-        {addOns.map((addOn, index) => (
-          <label htmlFor={label(addOn.item)} className="add-on" key={index}>
+        {addOnOptions.map((addOn) => (
+          <label htmlFor={label(addOn.item)} className="add-on" key={label(addOn.item)}>
             <input
               type="checkbox"
-              name={label(addOn.item)}
               id={label(addOn.item)}
-              value={label(addOn.item)}
+              checked={addOns.includes(addOn.item)}
+              onChange={() => handleAddOnChange(addOn.item)}
             />
             <span>
               <p className="addOn-item">{addOn.item}</p>
               <p className="addOn-desc">{addOn.desc}</p>
             </span>
-            <p className="addOn-price">{addOn.price}</p>
+            <p className="addOn-price">
+              ${plan.period === 'monthly' ? addOn.monthly : addOn.yearly}/
+              {plan.period === 'monthly' ? 'mo' : 'yr'}
+            </p>
           </label>
         ))}
       </div>

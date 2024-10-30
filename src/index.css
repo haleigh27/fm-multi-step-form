@@ -169,8 +169,54 @@ h2 {
 /* Main Layout and general styling         */
 /* --------------------------------------- */
 
-#form {
+#form-sidebar {
+  background-image: url('src/assets/images/bg-sidebar-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+form,
+.confirm {
   margin: auto;
+}
+
+.step-num {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-white);
+  color: var(--clr-white);
+  font-weight: 700;
+  font-size: 0.875;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-step {
+  background-color: var(--clr-sky-blue);
+  border-color: var(--clr-sky-blue);
+  color: var(--clr-denim);
+}
+
+.nav-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-buttons {
+  width: 123px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.back {
+  color: var(--clr-grey);
+}
+
+.next {
+  background-color: var(--clr-denim);
+  color: var(--clr-white);
 }
 
 .container {
@@ -184,6 +230,7 @@ h2 {
   background-color: var(--clr-white);
   padding: 32px 24px;
   border-radius: 10px;
+  margin-bottom: auto;
 }
 
 .description {
@@ -195,11 +242,28 @@ h2 {
 @media (min-width: 768px) {
   .container {
     max-width: 940px;
-    max-height: 600px;
+    height: 600px;
     border-radius: 15px;
     background-color: var(--clr-white);
     display: flex;
     padding: 16px;
+  }
+
+  #form-sidebar {
+    background-image: url('src/assets/images/bg-sidebar-desktop.svg');
+    background-size: auto 100%;
+    width: 274px;
+  }
+
+  .form-sidebar-details {
+    display: flex;
+  }
+
+  #form {
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .form-container {
@@ -449,6 +513,53 @@ input:checked + #label-checkbox-billing:after {
   line-height: 1.25;
   color: var(--clr-purplish-blue);
   margin-left: auto;
+}
+
+/* ------------------ */
+/* Summary            */
+/* ------------------ */
+
+.confirm-plan,
+.confirm-addOn,
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 24px;
+}
+
+.confirm-plan,
+.confirm-addOn-container {
+  background-color: var(--clr-very-light-grey);
+}
+
+.confirm-plan {
+  padding-block: 20px;
+}
+
+.confirm-plan-type,
+.confirm-plan-price {
+  font-weight: 500;
+}
+
+.confirm-addOn {
+  text-decoration: none;
+}
+
+.confirm-addOn > p:first-child,
+.total {
+  font-size: 0.875;
+  color: var(--clr-grey);
+}
+
+.confirm-addOn-container {
+  padding: 16px 0;
+  margin: 0 0 16px 0;
+}
+
+.total-price {
+  font-weight: 700;
+  font-size: 1.25;
+  color: var(--clr-purplish-blue);
 }
 
 /* ------------------ */
