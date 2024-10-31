@@ -8,6 +8,7 @@ import Confirmation from './components/formSections/Confirmation';
 import { plans } from './data';
 
 import { useMultiStepForm } from './hooks/useMultiStepForm';
+import { useWindowSize } from './hooks/useWindowSize';
 
 function App() {
   const initialData = {
@@ -24,6 +25,8 @@ function App() {
   const [data, setData] = useState(initialData);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isUserInfoValid, setIsUserInfoValid] = useState(false);
+
+  const { width } = useWindowSize();
 
   function updateFields(fields) {
     setData((prev) => {
@@ -67,11 +70,15 @@ function App() {
               <p className={`step-num ${currentStepIndex === index ? 'active-step' : ''}`}>
                 {index + 1}
               </p>
-              <p className="step-description">
-                Step {index + 1}
-                <br />
-                <span>{['YOUR INFO', 'SELECT PLAN', 'ADD-ONS', 'SUMMARY', 'CONFIRM'][index]}</span>
-              </p>
+              {width >= 768 && (
+                <p className="step-description">
+                  STEP {index + 1}
+                  <br />
+                  <span>
+                    {['YOUR INFO', 'SELECT PLAN', 'ADD-ONS', 'SUMMARY', 'CONFIRM'][index]}
+                  </span>
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -79,15 +86,15 @@ function App() {
       {!isConfirmed ? (
         <form onSubmit={onSubmit}>
           <div id="form">
-            <div className="form-container">{step}</div>
+            <div className="form-content">{step}</div>
             <div className="nav-buttons-container">
               {!isFirstStep && (
-                <button type="button" className="nav-buttons back" onClick={back}>
+                <button type="button" className="nav-button-back" onClick={back}>
                   Go Back
                 </button>
               )}
 
-              <button type="submit" className="nav-buttons next">
+              <button type="submit" className="nav-button-next">
                 {isLastStep ? 'Confirm' : 'Next Step'}
               </button>
             </div>
@@ -95,7 +102,7 @@ function App() {
         </form>
       ) : (
         <div className="confirm">
-          <div className="form-container">
+          <div className="form-content">
             <Confirmation data={data} onReset={() => setIsConfirmed(false)} />
           </div>
         </div>
