@@ -1,5 +1,5 @@
 import React from 'react';
-import IconThankYou from '../../assets/images/icon-thank-you.svg';
+import IconThankYou from '/images/icon-thank-you.svg';
 
 function Confirmation() {
   return (
