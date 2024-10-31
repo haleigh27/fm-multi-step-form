@@ -48,7 +48,7 @@ function Summary({ plan, addOns }) {
           )}
         </ul>
         <div className="total-container">
-          <p className="total">Total(per {plan.period === 'monthly' ? 'month' : 'year'})</p>
+          <p className="total">Total (per {plan.period === 'monthly' ? 'month' : 'year'})</p>
           <p className="total-price">
             +${totalCost}/{plan.period === 'monthly' ? 'mo' : 'yr'}
           </p>
